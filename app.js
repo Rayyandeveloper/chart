@@ -1,7 +1,6 @@
 let inputValue = document.getElementById('value');
     let arr = [];
 
-    // Function to render list
     function renderList() {
       let ul = document.getElementById('ul');
       ul.innerHTML = "";
@@ -21,7 +20,6 @@ let inputValue = document.getElementById('value');
       }
     }
 
-    // Add new fruit
     function add() {
       let value = inputValue.value.trim();
 
@@ -34,8 +32,6 @@ let inputValue = document.getElementById('value');
       inputValue.value = "";
       renderList();
     }
-
-    // Edit fruit using splice
     function edit(index) {
       let updated = prompt("Enter new fruit:", arr[index]);
 
@@ -47,17 +43,15 @@ let inputValue = document.getElementById('value');
       
     }
 
-    // Delete fruit using splice
     function del(index) {
       arr.splice(index, 1);
       renderList();
     }
 
-    // Clear all fruits
     document.getElementById('clear').addEventListener('click', function() {
-      arr.splice(0, arr.length); // empty the array using splice
+      arr.splice(0, arr.length); 
       renderList();
     });
 
-    // Initial render
+
     renderList();

@@ -1,64 +1,63 @@
 let inputValue = document.getElementById('value');
+    let arr = [];
 
+    // Function to render list
+    function renderList() {
+      let ul = document.getElementById('ul');
+      ul.innerHTML = "";
 
-// function add() {
-//     let value = inputValue.value;
-//     console.log(value);
-    
-// }
+      for (let i = 0; i < arr.length; i++) {
+        ul.innerHTML += `
+          <li class="fruit-item">
+            ${arr[i]}
+            <button onclick="edit(${i})">Edit</button>
+            <button onclick="del(${i})">Delete</button>
+          </li>
+        `;
+      }
 
-let arr = [];
-let arrayLength = arr.length
-
-
-function add() {    
-    let value = inputValue.value;
-    if (value == "") {
-    alert('Please fill input')
-}
-else{
-    
-    
-    arr.push(inputValue.value)
-    console.log(arr);
-    inputValue.value = "";
-    
-    function lists() {
-
-        for (let i = 0; i < arr.length; i++) {
-            console.log(arr[i]);
-            
-           
-        }
-    let ul = document.getElementById('ul');
-    ul.innerHTML += `<li>${value} <button onClick="edit()">Edit</button> <button onClick="del()">Del</button></li><br>` 
-    // console.log(value);
-     
-}
-    lists()
-   
-
-}
-  
-}
-function edit(){
-        console.log(`edit`);
-        
-    }    
-    function del(){
-        console.log('del');
-        
+      if (arr.length === 0) {
+        ul.innerHTML = "<p>No fruits in the list.</p>";
+      }
     }
 
+    // Add new fruit
+    function add() {
+      let value = inputValue.value.trim();
 
-function clearlists() {
-   let ul = document.getElementById('ul');
-    ul.innerHTML = ` ` 
-}
-let clear = document.getElementById('clear').addEventListener('click', function(){
-    arr.splice(0,arr.length)
-    console.log(arr);
-    
-    clearlists()
-})
+      if (value === "") {
+        alert("Please fill the input");
+        return;
+      }
 
+      arr.push(value);
+      inputValue.value = "";
+      renderList();
+    }
+
+    // Edit fruit using splice
+    function edit(index) {
+      let updated = prompt("Enter new fruit:", arr[index]);
+
+      if (updated !== null && updated.trim() !== "") {
+        arr.splice(index, 1, updated.trim());
+        renderList();
+       
+      }
+      
+    }
+
+    // Delete fruit using splice
+    function del(index) {
+      arr.splice(index, 1);
+      renderList();
+    }
+
+    // Clear all fruits
+    document.getElementById('clear').addEventListener('click', function() {
+      arr.splice(0, arr.length); // empty the array using splice
+      renderList();
+    });
+
+    // Initial render
+    renderList();

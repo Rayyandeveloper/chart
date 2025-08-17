@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Fruits List with Edit & Delete</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .fruit-item { margin-bottom: 8px; }
+    button { margin-left: 10px; }
+  </style>
 </head>
 <body>
-    <input type="text" id="value">
-    <br><br>
-    <button onClick="add()" id="add">add</button>
-    <button onClick="clear()" id="clear">Clear All</button>
-    <ul id="ul">
-        
-    </ul>
-    <script src="app.js"></script>
+
+  <h2>Fruits List</h2>
+
+  <input type="text" id="value" placeholder="Enter fruit name" />
+  <button onclick="add()">Add</button>
+  <button id="clear">Clear All</button>
+
+  <ul id="ul"></ul>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
